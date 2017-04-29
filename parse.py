@@ -62,6 +62,10 @@ def parse() -> List[Message]:
             else:  # appends all the content
                 current_contents.append(line)
 
+        # the last one
+        message = Message(current_timestamp, current_person, current_contents)
+        conversations.append(message)
+
     return conversations
 
 
