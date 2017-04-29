@@ -72,10 +72,15 @@ def parse() -> List[Message]:
 def main():
     conversations = parse()
 
-    # plain text
-    for message in conversations:
-        content = "\n".join(message.contents)
-        print(content)
+    with open("./chat.md", "w") as write_file:
+        # plain text
+        for message in conversations:
+            content = "\n".join(message.contents)
+            person = message.person
+            if person != "Suamiku":
+                person = message.person[:-3] + "XXX"
+
+            print(f"{person}: {content}\n")
 
 
 if __name__ == "__main__":
